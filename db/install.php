@@ -30,5 +30,4 @@
  */
 function xmldb_geniai_install() {
     global $DB;
-
 }

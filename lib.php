@@ -88,8 +88,14 @@ function geniai_add_instance(stdClass $data, $mform = null): int {
     // Handle saving uploaded custom JSON scenario file
     if ($mform && isset($data->scenariofile)) {
         $context = context_module::instance($cmid);
-        file_save_draft_area_files($data->scenariofile, $context->id, 'mod_geniai', 'scenariofile', 0,
-            ['subdirs' => 0, 'maxfiles' => 1]);
+        file_save_draft_area_files(
+            $data->scenariofile,
+            $context->id,
+            'mod_geniai',
+            'scenariofile',
+            0,
+            ['subdirs' => 0, 'maxfiles' => 1]
+        );
     }
 
     // Register with Moodle Gradebook
@@ -120,8 +126,14 @@ function geniai_update_instance(stdClass $data, $mform = null): bool {
 
     if ($result && $mform && isset($data->scenariofile)) {
         $context = context_module::instance($data->coursemodule);
-        file_save_draft_area_files($data->scenariofile, $context->id, 'mod_geniai', 'scenariofile', 0,
-            ['subdirs' => 0, 'maxfiles' => 1]);
+        file_save_draft_area_files(
+            $data->scenariofile,
+            $context->id,
+            'mod_geniai',
+            'scenariofile',
+            0,
+            ['subdirs' => 0, 'maxfiles' => 1]
+        );
     }
 
     // Sync Gradebook properties
@@ -170,7 +182,7 @@ function geniai_grade_item_update(stdClass $geniai, $grades = null): int {
         'idnumber' => $geniai->idnumber ?? '',
         'gradetype' => GRADE_TYPE_VALUE,
         'grademax' => 10,
-        'grademin' => 0
+        'grademin' => 0,
     ];
 
     if ($grades === 'reset') {
@@ -213,4 +225,3 @@ function geniai_update_grades(stdClass $geniai, int $userid = 0, bool $nullifnon
 
     geniai_grade_item_update($geniai, empty($grades) ? null : $grades);
 }
-

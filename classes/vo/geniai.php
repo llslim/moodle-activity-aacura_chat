@@ -30,7 +30,6 @@ namespace mod_geniai\vo;
  * @package mod_geniai\vo
  */
 class geniai extends \stdClass {
-
     /** @var int */
     public $id;
 

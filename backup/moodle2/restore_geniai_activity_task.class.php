@@ -34,7 +34,6 @@ require_once("{$CFG->dirroot}/mod/geniai/backup/moodle2/restore_geniai_stepslib.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_geniai_activity_task extends restore_activity_task {
-
     /**
      * Defines particular settings that this activity can have.
      */
@@ -49,9 +48,9 @@ class restore_geniai_activity_task extends restore_activity_task {
      */
     protected function define_my_steps(): void {
         $this->add_step(new restore_geniai_activity_structure_step(
-                "geniai_structure",
-                "geniai.xml")
-        );
+            "geniai_structure",
+            "geniai.xml"
+        ));
     }
 
     /**
@@ -77,9 +76,15 @@ class restore_geniai_activity_task extends restore_activity_task {
         $rules = [];
 
         $rules[] = new restore_decode_rule(
-            "CERTIFICATEBEAUTIFULVIEWBYID", '/mod/geniai/view.php?id=$1', "course_module");
+            "CERTIFICATEBEAUTIFULVIEWBYID",
+            '/mod/geniai/view.php?id=$1',
+            "course_module"
+        );
         $rules[] = new restore_decode_rule(
-            "CERTIFICATEBEAUTIFULINDEX", '/mod/geniai/index.php?id=$1', "course");
+            "CERTIFICATEBEAUTIFULINDEX",
+            '/mod/geniai/index.php?id=$1',
+            "course"
+        );
 
         return $rules;
     }

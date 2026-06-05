@@ -30,7 +30,6 @@ require_once("{$CFG->dirroot}/course/moodleform_mod.php");
  * Class mod_geniai_mod_form
  */
 class mod_geniai_mod_form extends moodleform_mod {
-
     /**
      * Defines forms elements
      * @throws coding_exception
@@ -57,13 +56,18 @@ class mod_geniai_mod_form extends moodleform_mod {
             'anna' => 'Anna Charles (Autism pre-K concern)',
             'brianna' => 'Brianna Mitchell (Apraxia / social isolation)',
             'cathy' => 'Cathy Fratner (Down Syndrome / app concern)',
-            'custom' => 'Custom JSON Upload (Upload scenario file below)'
+            'custom' => 'Custom JSON Upload (Upload scenario file below)',
         ]);
         $mform->setDefault('scenariocode', 'anna');
         $mform->setType('scenariocode', PARAM_ALPHA);
 
-        $mform->addElement('filepicker', 'scenariofile', get_string('scenariofile', 'mod_geniai'), null,
-            ['maxbytes' => 1024 * 1024, 'accepted_types' => ['.json']]);
+        $mform->addElement(
+            'filepicker',
+            'scenariofile',
+            get_string('scenariofile', 'mod_geniai'),
+            null,
+            ['maxbytes' => 1024 * 1024, 'accepted_types' => ['.json']]
+        );
 
         // Add standard elements.
         $this->standard_coursemodule_elements();

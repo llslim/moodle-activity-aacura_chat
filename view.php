@@ -90,8 +90,11 @@ $data = [
 
 $geniainame = get_config("local_geniai", "geniainame");
 $course = $DB->get_record("course", ["id" => $COURSE->id]);
-$data["message_02"] = get_string("message_02_course", "local_geniai",
-    ["geniainame" => $geniainame, "moodlename" => $SITE->fullname, "coursename" => $course->fullname]);
+$data["message_02"] = get_string(
+    "message_02_course",
+    "local_geniai",
+    ["geniainame" => $geniainame, "moodlename" => $SITE->fullname, "coursename" => $course->fullname]
+);
 
 echo $OUTPUT->render_from_template("mod_geniai/chat", $data);
 $PAGE->requires->js_call_amd("local_geniai/chat", "init", [$COURSE->id, release::version()]);

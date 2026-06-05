@@ -34,7 +34,6 @@ require_once("{$CFG->dirroot}/mod/geniai/backup/moodle2/backup_geniai_stepslib.p
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_geniai_activity_task extends backup_activity_task {
-
     /**
      * Defines particular settings for the plugin.
      */
@@ -47,9 +46,9 @@ class backup_geniai_activity_task extends backup_activity_task {
      */
     protected function define_my_steps() {
         $this->add_step(new backup_geniai_activity_structure_step(
-                "geniai_structure",
-                "geniai.xml")
-        );
+            "geniai_structure",
+            "geniai.xml"
+        ));
     }
 
     /**
