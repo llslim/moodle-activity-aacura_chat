@@ -98,34 +98,38 @@
 
 /* Input area styling */
 #page-mod-geniai-view #geniai-mod-popup #geniai-sendarea {
-  background: white;
-  border-top: 1px solid #e5e7eb;
-  padding: 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  position: relative;
-  flex-shrink: 0;
+  background: #ffffff !important;
+  border-top: 1px solid #e5e7eb !important;
+  padding: 16px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 #page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-textarea {
-  flex: 1;
-  border: 1px solid #cbd5e1;
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-size: 15px;
-  line-height: 1.4;
-  resize: none;
-  min-height: 38px;
-  height: 38px;
-  max-height: 120px;
-  transition: height 0.1s ease-out;
-  background: #ffffff;
-  color: #1e293b;
-  overflow-y: auto;
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
+  flex: 1 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+  resize: none !important;
+  min-height: 42px !important;
+  height: 42px !important;
+  max-height: 120px !important;
+  transition: height 0.1s ease-out !important;
+  background: #ffffff !important;
+  color: #1e293b !important;
+  overflow-y: auto !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 #page-mod-geniai-view
