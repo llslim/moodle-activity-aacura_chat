@@ -1,4 +1,5 @@
-#page-mod-geniai-view #geniai-mod-popup {
+#page-mod-geniai-view #geniai-mod-popup,
+#geniai-mod-popup {
   height: 80vh !important;
   max-height: 80vh !important;
   min-height: 400px !important;
@@ -14,7 +15,8 @@
   max-width: 800px !important;
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-scrollarea {
+#page-mod-geniai-view #geniai-mod-popup #geniai-scrollarea,
+#geniai-mod-popup #geniai-scrollarea {
   flex: 1 1 auto !important;
   height: auto !important;
   min-height: 0 !important;
@@ -99,7 +101,8 @@
 }
 
 /* Input area styling */
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea {
+#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea,
+#geniai-sendarea {
   background: #ffffff !important;
   border-top: 1px solid #e5e7eb !important;
   padding: 16px !important;
@@ -112,7 +115,8 @@
   opacity: 1 !important;
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-textarea {
+#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-textarea,
+#geniai-textarea {
   flex: 1 !important;
   border: 1px solid #cbd5e1 !important;
   border-radius: 20px !important;
