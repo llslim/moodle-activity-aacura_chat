@@ -1,7 +1,8 @@
 .chat-container {
   width: 100% !important;
   max-width: 800px !important;
-  margin: 0 auto !important;
+  margin: 0 auto 100px auto !important;
+  padding-bottom: 50px !important;
 }
 
 #page-mod-geniai-view #geniai-mod-popup,
@@ -116,7 +117,9 @@
   display: flex !important;
   align-items: flex-start !important;
   gap: 12px !important;
-  position: relative !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 10000 !important;
   flex-shrink: 0 !important;
   width: 100% !important;
   box-sizing: border-box !important;
