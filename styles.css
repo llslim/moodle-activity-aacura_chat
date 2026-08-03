@@ -7,6 +7,7 @@
 
 #page-mod-geniai-view #geniai-mod-popup,
 #geniai-mod-popup {
+  height: 600px !important;
   height: 75vh !important;
   min-height: 450px !important;
   background: #ffffff !important;
