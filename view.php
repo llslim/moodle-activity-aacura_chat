@@ -84,6 +84,7 @@ $data = [
     "anna_selected" => ($active_scenario === 'anna'),
     "brianna_selected" => ($active_scenario === 'brianna'),
     "cathy_selected" => ($active_scenario === 'cathy'),
+    "mary_selected" => ($active_scenario === 'mary'),
     "student_name" => fullname($USER),
     "course_name" => format_string($course->fullname),
 ];
