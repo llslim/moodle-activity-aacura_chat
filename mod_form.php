@@ -56,10 +56,23 @@ class mod_geniai_mod_form extends moodleform_mod {
             'anna' => 'Anna Charles (Autism pre-K concern)',
             'brianna' => 'Brianna Mitchell (Apraxia / social isolation)',
             'cathy' => 'Cathy Fratner (Down Syndrome / app concern)',
+            'mary' => 'Mary (Mother of Non-Verbal 6-Year-Old)',
             'custom' => 'Custom JSON Upload (Upload scenario file below)',
         ]);
         $mform->setDefault('scenariocode', 'anna');
         $mform->setType('scenariocode', PARAM_ALPHA);
+
+        // Add direct Scenario Builder link button in settings
+        $builderurl = new moodle_url('/local/geniai/scenario_builder.php');
+        $buttonhtml = '<div class="form-group row fitem">' .
+            '<div class="col-md-3 text-sm-right"><label class="col-form-label"></label></div>' .
+            '<div class="col-md-9 form-inline felement">' .
+            '<a href="' . $builderurl->out() . '" target="_blank" class="btn btn-primary" style="background-color: #4F46E5; border-color: #4F46E5; color: white;">' .
+            '🛠️ Open Custom Scenario Builder Tool' .
+            '</a>' .
+            '<span class="form-text text-muted ml-2">Build a custom scenario JSON file to upload below.</span>' .
+            '</div></div>';
+        $mform->addElement('html', $buttonhtml);
 
         $mform->addElement(
             'filepicker',
