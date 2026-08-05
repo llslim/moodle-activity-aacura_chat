@@ -39,8 +39,9 @@ $capabilities = [
         "captype" => "write",
         "contextlevel" => CONTEXT_COURSE,
         "archetypes" => [
-            "manager" => CAP_ALLOW,
             "editingteacher" => CAP_ALLOW,
+            "coursecreator" => CAP_ALLOW,
+            "manager" => CAP_ALLOW,
         ],
         "clonepermissionsfrom" => "moodle/course:manageactivities",
     ],
