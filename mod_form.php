@@ -52,15 +52,24 @@ class mod_geniai_mod_form extends moodleform_mod {
 
         $this->standard_intro_elements();
 
-        $mform->addElement('select', 'scenariocode', get_string('scenariocode', 'mod_geniai'), [
+        $scenarios = [
             'anna' => 'Anna Charles (Autism pre-K concern)',
             'brianna' => 'Brianna Mitchell (Apraxia / social isolation)',
             'cathy' => 'Cathy Fratner (Down Syndrome / app concern)',
             'mary' => 'Mary (Mother of Non-Verbal 6-Year-Old)',
-            'custom' => 'Custom JSON Upload (Upload scenario file below)',
-        ]);
+        ];
+
+        // Fetch custom registered personas from local_geniai_custom_scenarios DB table
+        $customrecords = $DB->get_records('local_geniai_custom_scenarios', null, 'name ASC');
+        foreach ($customrecords as $cr) {
+            $scenarios[$cr->scenariocode] = $cr->name . ' (Custom Persona)';
+        }
+
+        $scenarios['custom'] = 'Activity File Upload (Upload single scenario .json below)';
+
+        $mform->addElement('select', 'scenariocode', get_string('scenariocode', 'mod_geniai'), $scenarios);
         $mform->setDefault('scenariocode', 'anna');
-        $mform->setType('scenariocode', PARAM_ALPHA);
+        $mform->setType('scenariocode', PARAM_ALPHANUMEXT);
 
         // Add direct Scenario Builder link button in settings
         $builderurl = new moodle_url('/local/geniai/scenario_builder.php');

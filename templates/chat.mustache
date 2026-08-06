@@ -41,10 +41,9 @@
                 <div class="geniai-dropdown-wrapper">
                     <select id="geniai-persona-select" class="geniai-select-dropdown">
                         <option value="" disabled {{^active_scenario}}selected{{/active_scenario}}>-- Select a Parent Persona --</option>
-                        <option value="anna" {{#anna_selected}}selected{{/anna_selected}}>Anna Charles (Sarah's Mother - Autism)</option>
-                        <option value="brianna" {{#brianna_selected}}selected{{/brianna_selected}}>Brianna Mitchell (Wesley's Mother - Apraxia)</option>
-                        <option value="cathy" {{#cathy_selected}}selected{{/cathy_selected}}>Cathy Fratner (Charlie's Mother - Down Syndrome)</option>
-                        <option value="mary" {{#mary_selected}}selected{{/mary_selected}}>Mary (Mother of Non-Verbal 6-Year-Old)</option>
+                        {{#personas_options}}
+                        <option value="{{code}}" {{#selected}}selected{{/selected}}>{{name}}</option>
+                        {{/personas_options}}
                     </select>
                 </div>
                 <button id="geniai-generate-pdf" class="geniai-pdf-btn" title="Export conversation log to PDF">

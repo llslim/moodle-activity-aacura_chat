@@ -74,6 +74,39 @@ if ($activesession) {
     $active_scenario = $activesession->scenariocode;
 }
 
+// Build available personas options dynamically
+$personasoptions = [];
+$preloadednames = [
+    'anna' => "Anna Charles (Sarah's Mother - Autism)",
+    'brianna' => "Brianna Mitchell (Wesley's Mother - Apraxia)",
+    'cathy' => "Cathy Fratner (Charlie's Mother - Down Syndrome)",
+    'mary' => "Mary (Mother of Non-Verbal 6-Year-Old)",
+];
+
+// 1. Static preloaded personas enabled in site config
+$activesetting = get_config('local_geniai', 'active_scenarios');
+$enabledscenarios = !empty($activesetting) ? explode(',', $activesetting) : ['anna', 'brianna', 'cathy', 'mary'];
+
+foreach ($enabledscenarios as $code) {
+    if (isset($preloadednames[$code])) {
+        $personasoptions[] = [
+            'code' => $code,
+            'name' => $preloadednames[$code],
+            'selected' => ($active_scenario === $code),
+        ];
+    }
+}
+
+// 2. Site-wide custom uploaded personas
+$customrecords = $DB->get_records('local_geniai_custom_scenarios', null, 'name ASC');
+foreach ($customrecords as $cr) {
+    $personasoptions[] = [
+        'code' => $cr->scenariocode,
+        'name' => $cr->name . ' (Custom Persona)',
+        'selected' => ($active_scenario === $cr->scenariocode),
+    ];
+}
+
 $data = [
     "message_01" => get_string("message_01", "local_geniai", fullname($USER)),
     "manage_capability" => $capability,
@@ -81,10 +114,7 @@ $data = [
     "mode" => get_config("local_geniai", "mode"),
     "talk_geniai" => get_string("talk_geniai", "local_geniai", get_config("local_geniai", "geniainame")),
     "active_scenario" => $active_scenario,
-    "anna_selected" => ($active_scenario === 'anna'),
-    "brianna_selected" => ($active_scenario === 'brianna'),
-    "cathy_selected" => ($active_scenario === 'cathy'),
-    "mary_selected" => ($active_scenario === 'mary'),
+    "personas_options" => $personasoptions,
     "student_name" => fullname($USER),
     "course_name" => format_string($course->fullname),
 ];
