@@ -36,7 +36,7 @@ class mod_geniai_mod_form extends moodleform_mod {
      * @throws moodle_exception
      */
     public function definition(): void {
-        global $CFG;
+        global $CFG, $DB;
 
         $mform = $this->_form;
         $mform->addElement("header", "general", get_string("general", "form"));
