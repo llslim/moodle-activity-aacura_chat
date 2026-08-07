@@ -3,7 +3,6 @@ name: Deploy mod_geniai (Moodle Chatbot Activity Module)
 on:
   push:
     branches:
-      - main
       - moodle-5.2
   workflow_dispatch:
 
