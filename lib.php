@@ -206,10 +206,10 @@ function aacurachat_update_grades(stdClass $aacurachat, int $userid = 0, bool $n
     $grades = [];
     if ($userid) {
         // Fetch specific user's session grades
-        $session = $DB->get_record('local_aacura_core_sessions', ['userid' => $userid, 'scenariocode' => $aacurachat->scenariocode], '*', IGNORE_MULTIPLE);
+        $session = $DB->get_record('local_aacuracore_sessions', ['userid' => $userid, 'scenariocode' => $aacurachat->scenariocode], '*', IGNORE_MULTIPLE);
         if ($session) {
             $totalscore = 10;
-            $analytics = $DB->get_records('local_aacura_core_analytics', ['sessionid' => $session->id]);
+            $analytics = $DB->get_records('local_aacuracore_analytics', ['sessionid' => $session->id]);
             $missedcount = 0;
             foreach ($analytics as $analytic) {
                 if ($analytic->metric_value == 0.00) {

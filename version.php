@@ -31,5 +31,5 @@ $plugin->maturity = MATURITY_STABLE;
 $plugin->component = "mod_aacurachat";
 
 $plugin->dependencies = [
-    "local_aacura_core" => 2026052500,
+    "local_aacuracore" => 2026052500,
 ];

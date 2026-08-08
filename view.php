@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use local_aacura_core\local\util\release;
+use local_aacuracore\local\util\release;
 
 if (file_exists(__DIR__ . '/../../config.php')) {
     require_once(__DIR__ . '/../../config.php');
@@ -66,10 +66,10 @@ $completion->set_module_viewed($cm);
 
 echo $OUTPUT->header();
 
-$capability = has_capability("local/aacura_core:manage", $context);
+$capability = has_capability("local/aacuracore:manage", $context);
 
 $active_scenario = $aacurachat->scenariocode ?? 'anna';
-$activesession = $DB->get_record('local_aacura_core_sessions', ['userid' => $USER->id, 'courseid' => $course->id, 'cmid' => $cm->id], '*', IGNORE_MULTIPLE);
+$activesession = $DB->get_record('local_aacuracore_sessions', ['userid' => $USER->id, 'courseid' => $course->id, 'cmid' => $cm->id], '*', IGNORE_MULTIPLE);
 if ($activesession) {
     $active_scenario = $activesession->scenariocode;
 }
@@ -84,7 +84,7 @@ $preloadednames = [
 ];
 
 // 1. Static preloaded personas enabled in site config
-$activesetting = get_config('local_aacura_core', 'active_scenarios');
+$activesetting = get_config('local_aacuracore', 'active_scenarios');
 $enabledscenarios = !empty($activesetting) ? explode(',', $activesetting) : ['anna', 'brianna', 'cathy', 'mary'];
 
 foreach ($enabledscenarios as $code) {
@@ -98,7 +98,7 @@ foreach ($enabledscenarios as $code) {
 }
 
 // 2. Site-wide custom uploaded personas
-$customrecords = $DB->get_records('local_aacura_core_custom_scenarios', null, 'name ASC');
+$customrecords = $DB->get_records('local_aacuracore_custom_scenarios', null, 'name ASC');
 foreach ($customrecords as $cr) {
     $personasoptions[] = [
         'code' => $cr->scenariocode,
@@ -108,26 +108,26 @@ foreach ($customrecords as $cr) {
 }
 
 $data = [
-    "message_01" => get_string("message_01", "local_aacura_core", fullname($USER)),
+    "message_01" => get_string("message_01", "local_aacuracore", fullname($USER)),
     "manage_capability" => $capability,
-    "geniainame" => get_config("local_aacura_core", "geniainame"),
-    "mode" => get_config("local_aacura_core", "mode"),
-    "talk_geniai" => get_string("talk_geniai", "local_aacura_core", get_config("local_aacura_core", "geniainame")),
+    "geniainame" => get_config("local_aacuracore", "geniainame"),
+    "mode" => get_config("local_aacuracore", "mode"),
+    "talk_geniai" => get_string("talk_geniai", "local_aacuracore", get_config("local_aacuracore", "geniainame")),
     "active_scenario" => $active_scenario,
     "personas_options" => $personasoptions,
     "student_name" => fullname($USER),
     "course_name" => format_string($course->fullname),
 ];
 
-$geniainame = get_config("local_aacura_core", "geniainame");
+$geniainame = get_config("local_aacuracore", "geniainame");
 $course = $DB->get_record("course", ["id" => $COURSE->id]);
 $data["message_02"] = get_string(
     "message_02_course",
-    "local_aacura_core",
+    "local_aacuracore",
     ["geniainame" => $geniainame, "moodlename" => $SITE->fullname, "coursename" => $course->fullname]
 );
 
 echo $OUTPUT->render_from_template("mod_aacurachat/chat", $data);
-$PAGE->requires->js_call_amd("local_aacura_core/chat", "init", [$COURSE->id, release::version()]);
+$PAGE->requires->js_call_amd("local_aacuracore/chat", "init", [$COURSE->id, release::version()]);
 
 echo $OUTPUT->footer();

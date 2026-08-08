@@ -59,8 +59,8 @@ class mod_aacurachat_mod_form extends moodleform_mod {
             'mary' => 'Mary (Mother of Non-Verbal 6-Year-Old)',
         ];
 
-        // Fetch custom registered personas from local_aacura_core_custom_scenarios DB table
-        $customrecords = $DB->get_records('local_aacura_core_custom_scenarios', null, 'name ASC');
+        // Fetch custom registered personas from local_aacuracore_custom_scenarios DB table
+        $customrecords = $DB->get_records('local_aacuracore_custom_scenarios', null, 'name ASC');
         foreach ($customrecords as $cr) {
             $scenarios[$cr->scenariocode] = $cr->name . ' (Custom Persona)';
         }
@@ -72,7 +72,7 @@ class mod_aacurachat_mod_form extends moodleform_mod {
         $mform->setType('scenariocode', PARAM_ALPHANUMEXT);
 
         // Add direct Scenario Builder link button in settings
-        $builderurl = new moodle_url('/local/aacura_core/scenario_builder.php');
+        $builderurl = new moodle_url('/local/aacuracore/scenario_builder.php');
         $buttonhtml = '<div class="form-group row fitem">' .
             '<div class="col-md-3 text-sm-right"><label class="col-form-label"></label></div>' .
             '<div class="col-md-9 form-inline felement">' .

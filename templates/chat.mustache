@@ -28,8 +28,8 @@
 
 <div class="chat-container">
     <div id="geniai-mod-popup" data-student-name="{{student_name}}" data-course-name="{{course_name}}">
-        <input type="hidden" id="local_aacura_core_message_01" value="{{message_01}}" />
-        <input type="hidden" id="local_aacura_core_message_02" value="{{message_02}}" />
+        <input type="hidden" id="local_aacuracore_message_01" value="{{message_01}}" />
+        <input type="hidden" id="local_aacuracore_message_02" value="{{message_02}}" />
 
         <!-- Brand-new Premium Header with Persona Dropdown and Reset -->
         <div class="geniai-header-panel">
@@ -49,7 +49,7 @@
                 <button id="geniai-generate-pdf" class="geniai-pdf-btn" title="Export conversation log to PDF">
                     Generate PDF
                 </button>
-                <button id="geniai-clear-history" class="geniai-clear-btn" title="{{#str}}clear_history_title,local_aacura_core{{/str}}">
+                <button id="geniai-clear-history" class="geniai-clear-btn" title="{{#str}}clear_history_title,local_aacuracore{{/str}}">
                     Clear/Restart Chat
                 </button>
             </div>
@@ -62,21 +62,21 @@
         <div id="geniai-sendarea">
             <textarea
                 id="geniai-textarea"
-                placeholder="{{#str}}write_message,local_aacura_core{{/str}}"
+                placeholder="{{#str}}write_message,local_aacuracore{{/str}}"
                 aria-label="Student message input"
                 rows="1"
             ></textarea>
 
             <div id="geniai-icon-stop" style="display: none" role="button" tabindex="0" aria-label="Stop recording" title="Stop">
-                {{#pix}}icons/stop,local_aacura_core{{/pix}}
+                {{#pix}}icons/stop,local_aacuracore{{/pix}}
             </div>
 
-            <div id="geniai-icon-mic" role="button" tabindex="0" aria-label="Record voice input" title="{{#str}}send_message,local_aacura_core{{/str}}">
-                {{#pix}}icons/mic,local_aacura_core{{/pix}}
+            <div id="geniai-icon-mic" role="button" tabindex="0" aria-label="Record voice input" title="{{#str}}send_message,local_aacuracore{{/str}}">
+                {{#pix}}icons/mic,local_aacuracore{{/pix}}
             </div>
 
-            <div id="geniai-icon-send" role="button" tabindex="0" aria-label="Send message" title="{{#str}}send_message,local_aacura_core{{/str}}">
-                {{#pix}}icons/send,local_aacura_core{{/pix}}
+            <div id="geniai-icon-send" role="button" tabindex="0" aria-label="Send message" title="{{#str}}send_message,local_aacuracore{{/str}}">
+                {{#pix}}icons/send,local_aacuracore{{/pix}}
             </div>
         </div>
     </div>

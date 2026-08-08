@@ -55,7 +55,7 @@ UPDATE mdl_config_plugins SET plugin = 'mod_aacurachat' WHERE plugin = 'mod_geni
 To migrate existing course activities created under `mod_geniai` to `mod_aacurachat`, run the automated CLI migration tool included with the core engine:
 
 ```bash
-php local/aacura_core/cli/migrate_geniai_to_aacura.php
+php local/aacuracore/cli/migrate_geniai_to_aacura.php
 ```
 
 This script will migrate table definitions, instance IDs in `mdl_course_modules`, and gradebook items automatically.
