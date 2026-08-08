@@ -36,17 +36,17 @@ global $PAGE, $USER, $CFG;
 
 $id = required_param("id", PARAM_INT);
 
-$cm = get_coursemodule_from_id("geniai", $id, 0, false, MUST_EXIST);
+$cm = get_coursemodule_from_id("aacura_chat", $id, 0, false, MUST_EXIST);
 $course = $DB->get_record("course", ["id" => $cm->course], "*", MUST_EXIST);
 
 $context = context_module::instance($cm->id);
 
 /** @var \mod_aacura_chat\vo\geniai $geniai */
-$geniai = $DB->get_record("geniai", ["id" => $cm->instance], "*", MUST_EXIST);
+$aacura_chat = $DB->get_record("aacura_chat", ["id" => $cm->instance], "*", MUST_EXIST);
 
 $PAGE->set_context($context);
 $PAGE->set_url("/mod/aacura_chat/view.php", ["id" => $id]);
-$PAGE->set_title($course->shortname . ": " . $geniai->name);
+$PAGE->set_title($course->shortname . ": " . $aacura_chat->name);
 $PAGE->set_heading(format_string($course->fullname));
 
 require_course_login($course, true, $cm);
@@ -57,7 +57,7 @@ $event = \mod_aacura_chat\event\geniai_course_module_viewed::create([
     "context" => $PAGE->context,
 ]);
 $event->add_record_snapshot("course", $PAGE->course);
-$event->add_record_snapshot($PAGE->cm->modname, $geniai);
+$event->add_record_snapshot($PAGE->cm->modname, $aacura_chat);
 $event->trigger();
 
 // Update "viewed" state if required by completion system.
@@ -68,7 +68,7 @@ echo $OUTPUT->header();
 
 $capability = has_capability("local/aacura_core:manage", $context);
 
-$active_scenario = $geniai->scenariocode ?? 'anna';
+$active_scenario = $aacura_chat->scenariocode ?? 'anna';
 $activesession = $DB->get_record('local_aacura_core_sessions', ['userid' => $USER->id, 'courseid' => $course->id, 'cmid' => $cm->id], '*', IGNORE_MULTIPLE);
 if ($activesession) {
     $active_scenario = $activesession->scenariocode;

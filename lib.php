@@ -38,7 +38,7 @@
  *
  * @return mixed True if module supports feature, false if not, null if doesn't know
  */
-function geniai_supports(string $feature) {
+function aacura_chat_supports(string $feature) {
     switch ($feature) {
         case FEATURE_GROUPS:
             return true;
@@ -74,13 +74,13 @@ function geniai_supports(string $feature) {
  * @return int The id of the newly inserted record.
  * @throws dml_exception
  */
-function geniai_add_instance(stdClass $data, $mform = null): int {
+function aacura_chat_add_instance(stdClass $data, $mform = null): int {
     global $DB;
 
     $data->timecreated = time();
     $cmid = $data->coursemodule;
 
-    $data->id = $DB->insert_record("geniai", $data);
+    $data->id = $DB->insert_record("aacura_chat", $data);
 
     // We need to use context now, so we need to make sure all needed info is already in db.
     $DB->set_field("course_modules", "instance", $data->id, ["id" => $cmid]);
@@ -99,7 +99,7 @@ function geniai_add_instance(stdClass $data, $mform = null): int {
     }
 
     // Register with Moodle Gradebook
-    geniai_grade_item_update($data);
+    aacura_chat_grade_item_update($data);
 
     return $data->id;
 }
@@ -116,13 +116,13 @@ function geniai_add_instance(stdClass $data, $mform = null): int {
  * @return bool True if successful, false otherwise.
  * @throws dml_exception
  */
-function geniai_update_instance(stdClass $data, $mform = null): bool {
+function aacura_chat_update_instance(stdClass $data, $mform = null): bool {
     global $DB;
 
     $data->timemodified = time();
     $data->id = $data->instance;
 
-    $result = $DB->update_record("geniai", $data);
+    $result = $DB->update_record("aacura_chat", $data);
 
     if ($result && $mform && isset($data->scenariofile)) {
         $context = context_module::instance($data->coursemodule);
@@ -137,7 +137,7 @@ function geniai_update_instance(stdClass $data, $mform = null): bool {
     }
 
     // Sync Gradebook properties
-    geniai_grade_item_update($data);
+    aacura_chat_grade_item_update($data);
 
     return $result;
 }
@@ -151,17 +151,17 @@ function geniai_update_instance(stdClass $data, $mform = null): bool {
  * @throws coding_exception
  * @throws dml_exception
  */
-function geniai_delete_instance(int $id): bool {
+function aacura_chat_delete_instance(int $id): bool {
     global $DB;
 
-    if (!$DB->record_exists("geniai", ["id" => $id])) {
+    if (!$DB->record_exists("aacura_chat", ["id" => $id])) {
         return false;
     }
 
-    if (!$cm = get_coursemodule_from_instance("geniai", $id)) {
+    if (!$cm = get_coursemodule_from_instance("aacura_chat", $id)) {
         return false;
     }
-    $DB->delete_records("geniai", ["id" => $id]);
+    $DB->delete_records("aacura_chat", ["id" => $id]);
 
     return true;
 }
@@ -173,13 +173,13 @@ function geniai_delete_instance(int $id): bool {
  * @param array|stdClass $grades
  * @return int
  */
-function geniai_grade_item_update(stdClass $geniai, $grades = null): int {
+function aacura_chat_grade_item_update(stdClass $aacura_chat, $grades = null): int {
     global $CFG;
     require_once($CFG->libdir . '/gradelib.php');
 
     $params = [
-        'itemname' => $geniai->name,
-        'idnumber' => $geniai->idnumber ?? '',
+        'itemname' => $aacura_chat->name,
+        'idnumber' => $aacura_chat->idnumber ?? '',
         'gradetype' => GRADE_TYPE_VALUE,
         'grademax' => 10,
         'grademin' => 0,
@@ -190,7 +190,7 @@ function geniai_grade_item_update(stdClass $geniai, $grades = null): int {
         $grades = null;
     }
 
-    return grade_update('mod/aacura_chat', $geniai->course, 'mod', 'geniai', $geniai->id, 0, $grades, $params);
+    return grade_update('mod/aacura_chat', $aacura_chat->course, 'mod', 'aacura_chat', $aacura_chat->id, 0, $grades, $params);
 }
 
 /**
@@ -200,13 +200,13 @@ function geniai_grade_item_update(stdClass $geniai, $grades = null): int {
  * @param int $userid
  * @param bool $nullifnone
  */
-function geniai_update_grades(stdClass $geniai, int $userid = 0, bool $nullifnone = true): void {
+function aacura_chat_update_grades(stdClass $aacura_chat, int $userid = 0, bool $nullifnone = true): void {
     global $DB;
 
     $grades = [];
     if ($userid) {
         // Fetch specific user's session grades
-        $session = $DB->get_record('local_aacura_core_sessions', ['userid' => $userid, 'scenariocode' => $geniai->scenariocode], '*', IGNORE_MULTIPLE);
+        $session = $DB->get_record('local_aacura_core_sessions', ['userid' => $userid, 'scenariocode' => $aacura_chat->scenariocode], '*', IGNORE_MULTIPLE);
         if ($session) {
             $totalscore = 10;
             $analytics = $DB->get_records('local_aacura_core_analytics', ['sessionid' => $session->id]);
@@ -223,5 +223,5 @@ function geniai_update_grades(stdClass $geniai, int $userid = 0, bool $nullifnon
         }
     }
 
-    geniai_grade_item_update($geniai, empty($grades) ? null : $grades);
+    aacura_chat_grade_item_update($aacura_chat, empty($grades) ? null : $grades);
 }
