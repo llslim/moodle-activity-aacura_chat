@@ -34,20 +34,20 @@
  * @throws moodle_exception
  * @throws upgrade_exception
  */
-function xmldb_geniai_upgrade($oldversion) {
+function xmldb_aacura_chat_upgrade($oldversion) {
     global $CFG, $DB;
 
     $dbman = $DB->get_manager();
 
     if ($oldversion < 2026052500) {
-        $table = new xmldb_table('geniai');
+        $table = new xmldb_table('aacura_chat');
         $field = new xmldb_field('scenariocode', XMLDB_TYPE_CHAR, '100', null, XMLDB_NOTNULL, null, 'anna', 'introformat');
 
         if (!$dbman->field_exists($table, $field)) {
             $dbman->add_field($table, $field);
         }
 
-        upgrade_plugin_savepoint(true, 2026052500, 'mod', 'geniai');
+        upgrade_plugin_savepoint(true, 2026052500, 'mod', 'aacura_chat');
     }
 
     return true;
