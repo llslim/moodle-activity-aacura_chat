@@ -17,20 +17,20 @@
 /**
  * Defines the view event.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_aacura_chat\event;
+namespace mod_aacurachat\event;
 
 /**
- * The mod_aacura_chat instance list viewed event class
+ * The mod_aacurachat instance list viewed event class
  *
  * If the view mode needs to be stored as well, you may need to
  * override methods get_url() and get_legacy_log_data(), too.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

@@ -17,7 +17,7 @@
 /**
  * version file
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,7 +28,7 @@ $plugin->version = 2026052503;
 $plugin->release = "1.1.0";
 $plugin->requires = 2026042000;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->component = "mod_aacura_chat";
+$plugin->component = "mod_aacurachat";
 
 $plugin->dependencies = [
     "local_aacura_core" => 2026052500,

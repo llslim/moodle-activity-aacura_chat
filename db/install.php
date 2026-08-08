@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Install script for mod_aacura_chat.
+ * Install script for mod_aacurachat.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

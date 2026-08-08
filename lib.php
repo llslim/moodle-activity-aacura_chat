@@ -17,7 +17,7 @@
 /**
  * Library of interface functions and constants.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -38,7 +38,7 @@
  *
  * @return mixed True if module supports feature, false if not, null if doesn't know
  */
-function aacura_chat_supports(string $feature) {
+function aacurachat_supports(string $feature) {
     switch ($feature) {
         case FEATURE_GROUPS:
             return true;
@@ -62,25 +62,25 @@ function aacura_chat_supports(string $feature) {
 }
 
 /**
- * Saves a new instance of the mod_aacura_chat into the database.
+ * Saves a new instance of the mod_aacurachat into the database.
  *
  * Given an object containing all the necessary data, (defined by the form
  * in mod_form.php) this function will create a new instance and return the id
  * number of the instance.
  *
  * @param stdClass $data                           An object from the form.
- * @param mod_aacura_chat_mod_form $mform The form.
+ * @param mod_aacurachat_mod_form $mform The form.
  *
  * @return int The id of the newly inserted record.
  * @throws dml_exception
  */
-function aacura_chat_add_instance(stdClass $data, $mform = null): int {
+function aacurachat_add_instance(stdClass $data, $mform = null): int {
     global $DB;
 
     $data->timecreated = time();
     $cmid = $data->coursemodule;
 
-    $data->id = $DB->insert_record("aacura_chat", $data);
+    $data->id = $DB->insert_record("aacurachat", $data);
 
     // We need to use context now, so we need to make sure all needed info is already in db.
     $DB->set_field("course_modules", "instance", $data->id, ["id" => $cmid]);
@@ -91,7 +91,7 @@ function aacura_chat_add_instance(stdClass $data, $mform = null): int {
         file_save_draft_area_files(
             $data->scenariofile,
             $context->id,
-            'mod_aacura_chat',
+            'mod_aacurachat',
             'scenariofile',
             0,
             ['subdirs' => 0, 'maxfiles' => 1]
@@ -99,37 +99,37 @@ function aacura_chat_add_instance(stdClass $data, $mform = null): int {
     }
 
     // Register with Moodle Gradebook
-    aacura_chat_grade_item_update($data);
+    aacurachat_grade_item_update($data);
 
     return $data->id;
 }
 
 /**
- * Updates an instance of the mod_aacura_chat in the database.
+ * Updates an instance of the mod_aacurachat in the database.
  *
  * Given an object containing all the necessary data (defined in mod_form.php),
  * this function will update an existing instance with new data.
  *
  * @param stdClass $data                           An object from the form in mod_form.php.
- * @param mod_aacura_chat_mod_form $mform The form.
+ * @param mod_aacurachat_mod_form $mform The form.
  *
  * @return bool True if successful, false otherwise.
  * @throws dml_exception
  */
-function aacura_chat_update_instance(stdClass $data, $mform = null): bool {
+function aacurachat_update_instance(stdClass $data, $mform = null): bool {
     global $DB;
 
     $data->timemodified = time();
     $data->id = $data->instance;
 
-    $result = $DB->update_record("aacura_chat", $data);
+    $result = $DB->update_record("aacurachat", $data);
 
     if ($result && $mform && isset($data->scenariofile)) {
         $context = context_module::instance($data->coursemodule);
         file_save_draft_area_files(
             $data->scenariofile,
             $context->id,
-            'mod_aacura_chat',
+            'mod_aacurachat',
             'scenariofile',
             0,
             ['subdirs' => 0, 'maxfiles' => 1]
@@ -137,13 +137,13 @@ function aacura_chat_update_instance(stdClass $data, $mform = null): bool {
     }
 
     // Sync Gradebook properties
-    aacura_chat_grade_item_update($data);
+    aacurachat_grade_item_update($data);
 
     return $result;
 }
 
 /**
- * Removes an instance of the mod_aacura_chat from the database.
+ * Removes an instance of the mod_aacurachat from the database.
  *
  * @param int $id Id of the module instance.
  *
@@ -151,17 +151,17 @@ function aacura_chat_update_instance(stdClass $data, $mform = null): bool {
  * @throws coding_exception
  * @throws dml_exception
  */
-function aacura_chat_delete_instance(int $id): bool {
+function aacurachat_delete_instance(int $id): bool {
     global $DB;
 
-    if (!$DB->record_exists("aacura_chat", ["id" => $id])) {
+    if (!$DB->record_exists("aacurachat", ["id" => $id])) {
         return false;
     }
 
-    if (!$cm = get_coursemodule_from_instance("aacura_chat", $id)) {
+    if (!$cm = get_coursemodule_from_instance("aacurachat", $id)) {
         return false;
     }
-    $DB->delete_records("aacura_chat", ["id" => $id]);
+    $DB->delete_records("aacurachat", ["id" => $id]);
 
     return true;
 }
@@ -173,13 +173,13 @@ function aacura_chat_delete_instance(int $id): bool {
  * @param array|stdClass $grades
  * @return int
  */
-function aacura_chat_grade_item_update(stdClass $aacura_chat, $grades = null): int {
+function aacurachat_grade_item_update(stdClass $aacurachat, $grades = null): int {
     global $CFG;
     require_once($CFG->libdir . '/gradelib.php');
 
     $params = [
-        'itemname' => $aacura_chat->name,
-        'idnumber' => $aacura_chat->idnumber ?? '',
+        'itemname' => $aacurachat->name,
+        'idnumber' => $aacurachat->idnumber ?? '',
         'gradetype' => GRADE_TYPE_VALUE,
         'grademax' => 10,
         'grademin' => 0,
@@ -190,7 +190,7 @@ function aacura_chat_grade_item_update(stdClass $aacura_chat, $grades = null): i
         $grades = null;
     }
 
-    return grade_update('mod/aacura_chat', $aacura_chat->course, 'mod', 'aacura_chat', $aacura_chat->id, 0, $grades, $params);
+    return grade_update('mod/aacurachat', $aacurachat->course, 'mod', 'aacurachat', $aacurachat->id, 0, $grades, $params);
 }
 
 /**
@@ -200,13 +200,13 @@ function aacura_chat_grade_item_update(stdClass $aacura_chat, $grades = null): i
  * @param int $userid
  * @param bool $nullifnone
  */
-function aacura_chat_update_grades(stdClass $aacura_chat, int $userid = 0, bool $nullifnone = true): void {
+function aacurachat_update_grades(stdClass $aacurachat, int $userid = 0, bool $nullifnone = true): void {
     global $DB;
 
     $grades = [];
     if ($userid) {
         // Fetch specific user's session grades
-        $session = $DB->get_record('local_aacura_core_sessions', ['userid' => $userid, 'scenariocode' => $aacura_chat->scenariocode], '*', IGNORE_MULTIPLE);
+        $session = $DB->get_record('local_aacura_core_sessions', ['userid' => $userid, 'scenariocode' => $aacurachat->scenariocode], '*', IGNORE_MULTIPLE);
         if ($session) {
             $totalscore = 10;
             $analytics = $DB->get_records('local_aacura_core_analytics', ['sessionid' => $session->id]);
@@ -223,5 +223,5 @@ function aacura_chat_update_grades(stdClass $aacura_chat, int $userid = 0, bool 
         }
     }
 
-    aacura_chat_grade_item_update($aacura_chat, empty($grades) ? null : $grades);
+    aacurachat_grade_item_update($aacurachat, empty($grades) ? null : $grades);
 }

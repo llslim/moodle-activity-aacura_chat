@@ -17,7 +17,7 @@
 /**
  * mod_form file
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,9 +27,9 @@ defined('MOODLE_INTERNAL') || die;
 require_once("{$CFG->dirroot}/course/moodleform_mod.php");
 
 /**
- * Class mod_aacura_chat_mod_form
+ * Class mod_aacurachat_mod_form
  */
-class mod_aacura_chat_mod_form extends moodleform_mod {
+class mod_aacurachat_mod_form extends moodleform_mod {
     /**
      * Defines forms elements
      * @throws coding_exception
@@ -67,7 +67,7 @@ class mod_aacura_chat_mod_form extends moodleform_mod {
 
         $scenarios['custom'] = 'Activity File Upload (Upload single scenario .json below)';
 
-        $mform->addElement('select', 'scenariocode', get_string('scenariocode', 'mod_aacura_chat'), $scenarios);
+        $mform->addElement('select', 'scenariocode', get_string('scenariocode', 'mod_aacurachat'), $scenarios);
         $mform->setDefault('scenariocode', 'anna');
         $mform->setType('scenariocode', PARAM_ALPHANUMEXT);
 
@@ -86,7 +86,7 @@ class mod_aacura_chat_mod_form extends moodleform_mod {
         $mform->addElement(
             'filepicker',
             'scenariofile',
-            get_string('scenariofile', 'mod_aacura_chat'),
+            get_string('scenariofile', 'mod_aacurachat'),
             null,
             ['maxbytes' => 1024 * 1024, 'accepted_types' => ['.json']]
         );

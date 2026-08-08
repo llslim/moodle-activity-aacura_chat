@@ -17,7 +17,7 @@
 /**
  * Book module upgrade code
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -34,20 +34,20 @@
  * @throws moodle_exception
  * @throws upgrade_exception
  */
-function xmldb_aacura_chat_upgrade($oldversion) {
+function xmldb_aacurachat_upgrade($oldversion) {
     global $CFG, $DB;
 
     $dbman = $DB->get_manager();
 
     if ($oldversion < 2026052500) {
-        $table = new xmldb_table('aacura_chat');
+        $table = new xmldb_table('aacurachat');
         $field = new xmldb_field('scenariocode', XMLDB_TYPE_CHAR, '100', null, XMLDB_NOTNULL, null, 'anna', 'introformat');
 
         if (!$dbman->field_exists($table, $field)) {
             $dbman->add_field($table, $field);
         }
 
-        upgrade_plugin_savepoint(true, 2026052500, 'mod', 'aacura_chat');
+        upgrade_plugin_savepoint(true, 2026052500, 'mod', 'aacurachat');
     }
 
     return true;

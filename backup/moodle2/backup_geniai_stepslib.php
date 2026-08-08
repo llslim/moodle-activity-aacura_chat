@@ -17,7 +17,7 @@
 /**
  * Define the complete structure for backup, with file and id annotations.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,7 +25,7 @@
 /**
  * THe class defines the complete structure for backup, with file and id annotations.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -47,7 +47,7 @@ class backup_geniai_activity_structure_step extends backup_activity_structure_st
         $geniai->set_source_table("geniai", ["id" => backup::VAR_ACTIVITYID]);
 
         // Define file annotations.
-        $geniai->annotate_files("mod_aacura_chat", "intro", null); // This file area hasn't itemid.
+        $geniai->annotate_files("mod_aacurachat", "intro", null); // This file area hasn't itemid.
 
         return $this->prepare_activity_structure($geniai);
     }

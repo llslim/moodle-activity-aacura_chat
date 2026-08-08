@@ -17,17 +17,17 @@
 /**
  * Class geniai
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_aacura_chat\vo;
+namespace mod_aacurachat\vo;
 
 /**
  * Class geniai
  *
- * @package mod_aacura_chat\vo
+ * @package mod_aacurachat\vo
  */
 class geniai extends \stdClass {
     /** @var int */

@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Prints an instance of mod_aacura_chat.
+ * Prints an instance of mod_aacurachat.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -36,28 +36,28 @@ global $PAGE, $USER, $CFG;
 
 $id = required_param("id", PARAM_INT);
 
-$cm = get_coursemodule_from_id("aacura_chat", $id, 0, false, MUST_EXIST);
+$cm = get_coursemodule_from_id("aacurachat", $id, 0, false, MUST_EXIST);
 $course = $DB->get_record("course", ["id" => $cm->course], "*", MUST_EXIST);
 
 $context = context_module::instance($cm->id);
 
-/** @var \mod_aacura_chat\vo\geniai $geniai */
-$aacura_chat = $DB->get_record("aacura_chat", ["id" => $cm->instance], "*", MUST_EXIST);
+/** @var \mod_aacurachat\vo\geniai $geniai */
+$aacurachat = $DB->get_record("aacurachat", ["id" => $cm->instance], "*", MUST_EXIST);
 
 $PAGE->set_context($context);
-$PAGE->set_url("/mod/aacura_chat/view.php", ["id" => $id]);
-$PAGE->set_title($course->shortname . ": " . $aacura_chat->name);
+$PAGE->set_url("/mod/aacurachat/view.php", ["id" => $id]);
+$PAGE->set_title($course->shortname . ": " . $aacurachat->name);
 $PAGE->set_heading(format_string($course->fullname));
 
 require_course_login($course, true, $cm);
-require_capability("mod/aacura_chat:view", $context);
+require_capability("mod/aacurachat:view", $context);
 
-$event = \mod_aacura_chat\event\geniai_course_module_viewed::create([
+$event = \mod_aacurachat\event\geniai_course_module_viewed::create([
     "objectid" => $PAGE->cm->instance,
     "context" => $PAGE->context,
 ]);
 $event->add_record_snapshot("course", $PAGE->course);
-$event->add_record_snapshot($PAGE->cm->modname, $aacura_chat);
+$event->add_record_snapshot($PAGE->cm->modname, $aacurachat);
 $event->trigger();
 
 // Update "viewed" state if required by completion system.
@@ -68,7 +68,7 @@ echo $OUTPUT->header();
 
 $capability = has_capability("local/aacura_core:manage", $context);
 
-$active_scenario = $aacura_chat->scenariocode ?? 'anna';
+$active_scenario = $aacurachat->scenariocode ?? 'anna';
 $activesession = $DB->get_record('local_aacura_core_sessions', ['userid' => $USER->id, 'courseid' => $course->id, 'cmid' => $cm->id], '*', IGNORE_MULTIPLE);
 if ($activesession) {
     $active_scenario = $activesession->scenariocode;
@@ -127,7 +127,7 @@ $data["message_02"] = get_string(
     ["geniainame" => $geniainame, "moodlename" => $SITE->fullname, "coursename" => $course->fullname]
 );
 
-echo $OUTPUT->render_from_template("mod_aacura_chat/chat", $data);
+echo $OUTPUT->render_from_template("mod_aacurachat/chat", $data);
 $PAGE->requires->js_call_amd("local_aacura_core/chat", "init", [$COURSE->id, release::version()]);
 
 echo $OUTPUT->footer();

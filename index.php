@@ -17,7 +17,7 @@
 /**
  * index file
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo kraus (http://eduardokraus.com)
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -40,12 +40,12 @@ require_course_login($course);
 $params = [
     "context" => context_course::instance($course->id),
 ];
-$event = \mod_aacura_chat\event\course_module_instance_list_viewed::create($params);
+$event = \mod_aacurachat\event\course_module_instance_list_viewed::create($params);
 $event->add_record_snapshot("course", $course);
 $event->trigger();
 
-$strname = get_string("modulenameplural", "mod_aacura_chat");
-$PAGE->set_url("/mod/aacura_chat/index.php", ["id" => $id]);
+$strname = get_string("modulenameplural", "mod_aacurachat");
+$PAGE->set_url("/mod/aacurachat/index.php", ["id" => $id]);
 $PAGE->navbar->add($strname);
 $PAGE->set_title("$course->shortname: $strname");
 $PAGE->set_heading($course->fullname);
@@ -61,7 +61,7 @@ if ($usesections) {
 }
 
 if (!$geniais = get_all_instances_in_course("geniai", $course)) {
-    notice(get_string("thereareno", "moodle", get_string("modulenameplural", "mod_aacura_chat")));
+    notice(get_string("thereareno", "moodle", get_string("modulenameplural", "mod_aacurachat")));
     exit;
 }
 

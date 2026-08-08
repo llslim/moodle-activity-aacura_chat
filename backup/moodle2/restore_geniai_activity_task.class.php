@@ -15,21 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The task that provides a complete restore of mod_aacura_chat is defined here.
+ * The task that provides a complete restore of mod_aacurachat is defined here.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once("{$CFG->dirroot}/mod/aacura_chat/backup/moodle2/restore_geniai_stepslib.php");
+require_once("{$CFG->dirroot}/mod/aacurachat/backup/moodle2/restore_geniai_stepslib.php");
 
 /**
- * The class provides a complete restore of mod_aacura_chat.
+ * The class provides a complete restore of mod_aacurachat.
  *
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -77,12 +77,12 @@ class restore_geniai_activity_task extends restore_activity_task {
 
         $rules[] = new restore_decode_rule(
             "CERTIFICATEBEAUTIFULVIEWBYID",
-            '/mod/aacura_chat/view.php?id=$1',
+            '/mod/aacurachat/view.php?id=$1',
             "course_module"
         );
         $rules[] = new restore_decode_rule(
             "CERTIFICATEBEAUTIFULINDEX",
-            '/mod/aacura_chat/index.php?id=$1',
+            '/mod/aacurachat/index.php?id=$1',
             "course"
         );
 
@@ -91,7 +91,7 @@ class restore_geniai_activity_task extends restore_activity_task {
 
     /**
      * Defines the restore log rules that will be applied by the
-     * {@see restore_logs_processor} when restoring mod_aacura_chat logs. It
+     * {@see restore_logs_processor} when restoring mod_aacurachat logs. It
      * must return one array of {@see restore_log_rule} objects.
      *
      * @return restore_log_rule[].

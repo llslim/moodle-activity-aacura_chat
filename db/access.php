@@ -17,7 +17,7 @@
 /**
  * Plugin capabilities are defined here.
  loca
- * @package   mod_aacura_chat
+ * @package   mod_aacurachat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 $capabilities = [
-    "mod/aacura_chat:view" => [
+    "mod/aacurachat:view" => [
         "captype" => "read",
         "contextlevel" => CONTEXT_MODULE,
         "archetypes" => [
@@ -35,7 +35,7 @@ $capabilities = [
             "manager" => CAP_ALLOW,
         ],
     ],
-    "mod/aacura_chat:addinstance" => [
+    "mod/aacurachat:addinstance" => [
         "captype" => "write",
         "contextlevel" => CONTEXT_COURSE,
         "archetypes" => [
