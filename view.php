@@ -15,14 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Prints an instance of mod_geniai.
+ * Prints an instance of mod_aacura_chat.
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use local_geniai\local\util\release;
+use local_aacura_core\local\util\release;
 
 if (file_exists(__DIR__ . '/../../config.php')) {
     require_once(__DIR__ . '/../../config.php');
@@ -41,18 +41,18 @@ $course = $DB->get_record("course", ["id" => $cm->course], "*", MUST_EXIST);
 
 $context = context_module::instance($cm->id);
 
-/** @var \mod_geniai\vo\geniai $geniai */
+/** @var \mod_aacura_chat\vo\geniai $geniai */
 $geniai = $DB->get_record("geniai", ["id" => $cm->instance], "*", MUST_EXIST);
 
 $PAGE->set_context($context);
-$PAGE->set_url("/mod/geniai/view.php", ["id" => $id]);
+$PAGE->set_url("/mod/aacura_chat/view.php", ["id" => $id]);
 $PAGE->set_title($course->shortname . ": " . $geniai->name);
 $PAGE->set_heading(format_string($course->fullname));
 
 require_course_login($course, true, $cm);
-require_capability("mod/geniai:view", $context);
+require_capability("mod/aacura_chat:view", $context);
 
-$event = \mod_geniai\event\geniai_course_module_viewed::create([
+$event = \mod_aacura_chat\event\geniai_course_module_viewed::create([
     "objectid" => $PAGE->cm->instance,
     "context" => $PAGE->context,
 ]);
@@ -66,10 +66,10 @@ $completion->set_module_viewed($cm);
 
 echo $OUTPUT->header();
 
-$capability = has_capability("local/geniai:manage", $context);
+$capability = has_capability("local/aacura_core:manage", $context);
 
 $active_scenario = $geniai->scenariocode ?? 'anna';
-$activesession = $DB->get_record('local_geniai_sessions', ['userid' => $USER->id, 'courseid' => $course->id, 'cmid' => $cm->id], '*', IGNORE_MULTIPLE);
+$activesession = $DB->get_record('local_aacura_core_sessions', ['userid' => $USER->id, 'courseid' => $course->id, 'cmid' => $cm->id], '*', IGNORE_MULTIPLE);
 if ($activesession) {
     $active_scenario = $activesession->scenariocode;
 }
@@ -84,7 +84,7 @@ $preloadednames = [
 ];
 
 // 1. Static preloaded personas enabled in site config
-$activesetting = get_config('local_geniai', 'active_scenarios');
+$activesetting = get_config('local_aacura_core', 'active_scenarios');
 $enabledscenarios = !empty($activesetting) ? explode(',', $activesetting) : ['anna', 'brianna', 'cathy', 'mary'];
 
 foreach ($enabledscenarios as $code) {
@@ -98,7 +98,7 @@ foreach ($enabledscenarios as $code) {
 }
 
 // 2. Site-wide custom uploaded personas
-$customrecords = $DB->get_records('local_geniai_custom_scenarios', null, 'name ASC');
+$customrecords = $DB->get_records('local_aacura_core_custom_scenarios', null, 'name ASC');
 foreach ($customrecords as $cr) {
     $personasoptions[] = [
         'code' => $cr->scenariocode,
@@ -108,26 +108,26 @@ foreach ($customrecords as $cr) {
 }
 
 $data = [
-    "message_01" => get_string("message_01", "local_geniai", fullname($USER)),
+    "message_01" => get_string("message_01", "local_aacura_core", fullname($USER)),
     "manage_capability" => $capability,
-    "geniainame" => get_config("local_geniai", "geniainame"),
-    "mode" => get_config("local_geniai", "mode"),
-    "talk_geniai" => get_string("talk_geniai", "local_geniai", get_config("local_geniai", "geniainame")),
+    "geniainame" => get_config("local_aacura_core", "geniainame"),
+    "mode" => get_config("local_aacura_core", "mode"),
+    "talk_geniai" => get_string("talk_geniai", "local_aacura_core", get_config("local_aacura_core", "geniainame")),
     "active_scenario" => $active_scenario,
     "personas_options" => $personasoptions,
     "student_name" => fullname($USER),
     "course_name" => format_string($course->fullname),
 ];
 
-$geniainame = get_config("local_geniai", "geniainame");
+$geniainame = get_config("local_aacura_core", "geniainame");
 $course = $DB->get_record("course", ["id" => $COURSE->id]);
 $data["message_02"] = get_string(
     "message_02_course",
-    "local_geniai",
+    "local_aacura_core",
     ["geniainame" => $geniainame, "moodlename" => $SITE->fullname, "coursename" => $course->fullname]
 );
 
-echo $OUTPUT->render_from_template("mod_geniai/chat", $data);
-$PAGE->requires->js_call_amd("local_geniai/chat", "init", [$COURSE->id, release::version()]);
+echo $OUTPUT->render_from_template("mod_aacura_chat/chat", $data);
+$PAGE->requires->js_call_amd("local_aacura_core/chat", "init", [$COURSE->id, release::version()]);
 
 echo $OUTPUT->footer();

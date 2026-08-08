@@ -17,19 +17,19 @@
 /**
  * The task that provides all the steps to perform a complete backup is defined here.
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once("{$CFG->dirroot}/mod/geniai/backup/moodle2/backup_geniai_stepslib.php");
+require_once("{$CFG->dirroot}/mod/aacura_chat/backup/moodle2/backup_geniai_stepslib.php");
 
 /**
- * The class provides all the settings and steps to perform one complete backup of mod_geniai.
+ * The class provides all the settings and steps to perform one complete backup of mod_aacura_chat.
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

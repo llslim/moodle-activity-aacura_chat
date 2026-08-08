@@ -17,7 +17,7 @@
 /**
  * version file
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,8 +28,8 @@ $plugin->version = 2026052503;
 $plugin->release = "1.1.0";
 $plugin->requires = 2026042000;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->component = "mod_geniai";
+$plugin->component = "mod_aacura_chat";
 
 $plugin->dependencies = [
-    "local_geniai" => 2026052500,
+    "local_aacura_core" => 2026052500,
 ];

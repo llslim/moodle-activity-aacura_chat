@@ -17,7 +17,7 @@
 /**
  * mod_form file
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,9 +27,9 @@ defined('MOODLE_INTERNAL') || die;
 require_once("{$CFG->dirroot}/course/moodleform_mod.php");
 
 /**
- * Class mod_geniai_mod_form
+ * Class mod_aacura_chat_mod_form
  */
-class mod_geniai_mod_form extends moodleform_mod {
+class mod_aacura_chat_mod_form extends moodleform_mod {
     /**
      * Defines forms elements
      * @throws coding_exception
@@ -59,20 +59,20 @@ class mod_geniai_mod_form extends moodleform_mod {
             'mary' => 'Mary (Mother of Non-Verbal 6-Year-Old)',
         ];
 
-        // Fetch custom registered personas from local_geniai_custom_scenarios DB table
-        $customrecords = $DB->get_records('local_geniai_custom_scenarios', null, 'name ASC');
+        // Fetch custom registered personas from local_aacura_core_custom_scenarios DB table
+        $customrecords = $DB->get_records('local_aacura_core_custom_scenarios', null, 'name ASC');
         foreach ($customrecords as $cr) {
             $scenarios[$cr->scenariocode] = $cr->name . ' (Custom Persona)';
         }
 
         $scenarios['custom'] = 'Activity File Upload (Upload single scenario .json below)';
 
-        $mform->addElement('select', 'scenariocode', get_string('scenariocode', 'mod_geniai'), $scenarios);
+        $mform->addElement('select', 'scenariocode', get_string('scenariocode', 'mod_aacura_chat'), $scenarios);
         $mform->setDefault('scenariocode', 'anna');
         $mform->setType('scenariocode', PARAM_ALPHANUMEXT);
 
         // Add direct Scenario Builder link button in settings
-        $builderurl = new moodle_url('/local/geniai/scenario_builder.php');
+        $builderurl = new moodle_url('/local/aacura_core/scenario_builder.php');
         $buttonhtml = '<div class="form-group row fitem">' .
             '<div class="col-md-3 text-sm-right"><label class="col-form-label"></label></div>' .
             '<div class="col-md-9 form-inline felement">' .
@@ -86,7 +86,7 @@ class mod_geniai_mod_form extends moodleform_mod {
         $mform->addElement(
             'filepicker',
             'scenariofile',
-            get_string('scenariofile', 'mod_geniai'),
+            get_string('scenariofile', 'mod_aacura_chat'),
             null,
             ['maxbytes' => 1024 * 1024, 'accepted_types' => ['.json']]
         );

@@ -17,7 +17,7 @@
 /**
  * Library of interface functions and constants.
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -62,14 +62,14 @@ function geniai_supports(string $feature) {
 }
 
 /**
- * Saves a new instance of the mod_geniai into the database.
+ * Saves a new instance of the mod_aacura_chat into the database.
  *
  * Given an object containing all the necessary data, (defined by the form
  * in mod_form.php) this function will create a new instance and return the id
  * number of the instance.
  *
  * @param stdClass $data                           An object from the form.
- * @param mod_geniai_mod_form $mform The form.
+ * @param mod_aacura_chat_mod_form $mform The form.
  *
  * @return int The id of the newly inserted record.
  * @throws dml_exception
@@ -91,7 +91,7 @@ function geniai_add_instance(stdClass $data, $mform = null): int {
         file_save_draft_area_files(
             $data->scenariofile,
             $context->id,
-            'mod_geniai',
+            'mod_aacura_chat',
             'scenariofile',
             0,
             ['subdirs' => 0, 'maxfiles' => 1]
@@ -105,13 +105,13 @@ function geniai_add_instance(stdClass $data, $mform = null): int {
 }
 
 /**
- * Updates an instance of the mod_geniai in the database.
+ * Updates an instance of the mod_aacura_chat in the database.
  *
  * Given an object containing all the necessary data (defined in mod_form.php),
  * this function will update an existing instance with new data.
  *
  * @param stdClass $data                           An object from the form in mod_form.php.
- * @param mod_geniai_mod_form $mform The form.
+ * @param mod_aacura_chat_mod_form $mform The form.
  *
  * @return bool True if successful, false otherwise.
  * @throws dml_exception
@@ -129,7 +129,7 @@ function geniai_update_instance(stdClass $data, $mform = null): bool {
         file_save_draft_area_files(
             $data->scenariofile,
             $context->id,
-            'mod_geniai',
+            'mod_aacura_chat',
             'scenariofile',
             0,
             ['subdirs' => 0, 'maxfiles' => 1]
@@ -143,7 +143,7 @@ function geniai_update_instance(stdClass $data, $mform = null): bool {
 }
 
 /**
- * Removes an instance of the mod_geniai from the database.
+ * Removes an instance of the mod_aacura_chat from the database.
  *
  * @param int $id Id of the module instance.
  *
@@ -190,7 +190,7 @@ function geniai_grade_item_update(stdClass $geniai, $grades = null): int {
         $grades = null;
     }
 
-    return grade_update('mod/geniai', $geniai->course, 'mod', 'geniai', $geniai->id, 0, $grades, $params);
+    return grade_update('mod/aacura_chat', $geniai->course, 'mod', 'geniai', $geniai->id, 0, $grades, $params);
 }
 
 /**
@@ -206,10 +206,10 @@ function geniai_update_grades(stdClass $geniai, int $userid = 0, bool $nullifnon
     $grades = [];
     if ($userid) {
         // Fetch specific user's session grades
-        $session = $DB->get_record('local_geniai_sessions', ['userid' => $userid, 'scenariocode' => $geniai->scenariocode], '*', IGNORE_MULTIPLE);
+        $session = $DB->get_record('local_aacura_core_sessions', ['userid' => $userid, 'scenariocode' => $geniai->scenariocode], '*', IGNORE_MULTIPLE);
         if ($session) {
             $totalscore = 10;
-            $analytics = $DB->get_records('local_geniai_analytics', ['sessionid' => $session->id]);
+            $analytics = $DB->get_records('local_aacura_core_analytics', ['sessionid' => $session->id]);
             $missedcount = 0;
             foreach ($analytics as $analytic) {
                 if ($analytic->metric_value == 0.00) {

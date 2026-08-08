@@ -15,17 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * All the steps to restore mod_geniai are defined here.
+ * All the steps to restore mod_aacura_chat are defined here.
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * CLass defines the structure step to restore one mod_geniai activity.
+ * CLass defines the structure step to restore one mod_aacura_chat activity.
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -63,6 +63,6 @@ class restore_geniai_activity_structure_step extends restore_activity_structure_
      * Defines post-execution actions.
      */
     protected function after_execute(): void {
-        $this->add_related_files("mod_geniai", "intro", null);
+        $this->add_related_files("mod_aacura_chat", "intro", null);
     }
 }

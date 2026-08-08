@@ -17,12 +17,12 @@
 /**
  * Privacy API implementation for the geniai plugin.
  *
- * @package   mod_geniai
+ * @package   mod_aacura_chat
  * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_geniai\privacy;
+namespace mod_aacura_chat\privacy;
 
 /**
  * Privacy Subsystem implementation for the Equation plugin for TinyMCE.

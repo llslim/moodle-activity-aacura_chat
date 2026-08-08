@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/geniai/db" VERSION="20240303" COMMENT="XMLDB file for Moodle mod geniai"
+<XMLDB PATH="mod/aacura_chat/db" VERSION="20240303" COMMENT="XMLDB file for Moodle mod geniai"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
   <TABLES>

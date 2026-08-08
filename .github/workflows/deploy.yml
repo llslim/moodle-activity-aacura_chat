@@ -1,4 +1,4 @@
-name: Deploy mod_geniai (Moodle Chatbot Activity Module)
+name: Deploy mod_aacura_chat (Moodle Chatbot Activity Module)
 
 on:
   push:
@@ -32,10 +32,10 @@ jobs:
           ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
-      - name: Deploy mod_geniai Module via rsync
+      - name: Deploy mod_aacura_chat Module via rsync
         run: |
-          echo "Deploying mod_geniai submodule to $SSH_HOST:$DEPLOY_PATH/mod/geniai/..."
-          rsync -rtvzp --delete -e "ssh -o StrictHostKeyChecking=accept-new" ./ $SSH_USER@$SSH_HOST:$DEPLOY_PATH/mod/geniai/
+          echo "Deploying mod_aacura_chat submodule to $SSH_HOST:$DEPLOY_PATH/mod/aacura_chat/..."
+          rsync -rtvzp --delete -e "ssh -o StrictHostKeyChecking=accept-new" ./ $SSH_USER@$SSH_HOST:$DEPLOY_PATH/mod/aacura_chat/
 
       - name: Execute Remote Moodle Updates
         run: |
@@ -54,4 +54,4 @@ jobs:
           echo "Deactivating Moodle maintenance mode..."
           ssh $SSH_USER@$SSH_HOST "php $DEPLOY_PATH/admin/cli/maintenance.php --disable"
 
-          echo "mod_geniai deployment complete!"
+          echo "mod_aacura_chat deployment complete!"
