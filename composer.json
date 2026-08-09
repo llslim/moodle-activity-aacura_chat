@@ -1,0 +1,9 @@
+{
+    "name": "llslim/moodle-mod_aacurachat",
+    "description": "User-facing AACURA Chatbot Activity Module",
+    "type": "moodle-mod",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "moodle/composer-installer": "*"
+    }
+}
