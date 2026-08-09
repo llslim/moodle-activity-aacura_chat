@@ -33,3 +33,9 @@ php local/aacuracore/cli/migrate_geniai_to_aacura.php
 ```
 
 This tool automatically renames activity tables, updates course module instance IDs, and updates gradebook links.
+
+---
+
+## 🏷️ Version History & Git Tagging Log
+
+For the semantic version log of the activity plugin commits mapped according to our tagging policy, see **[version_history.md](version_history.md)**.
