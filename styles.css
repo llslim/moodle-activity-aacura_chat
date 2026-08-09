@@ -1,11 +1,11 @@
-.chat-container {
+﻿.chat-container {
   width: 100% !important;
   max-width: 800px !important;
   margin: 0 auto 100px auto !important;
   padding-bottom: 50px !important;
 }
 
-#page-mod-geniai-view #geniai-mod-popup,
+#page-mod-aacurachat-view #geniai-mod-popup,
 #geniai-mod-popup {
   height: 600px !important;
   height: 75vh !important;
@@ -23,7 +23,7 @@
   box-sizing: border-box !important;
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-scrollarea,
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-scrollarea,
 #geniai-mod-popup #geniai-scrollarea {
   flex: 1 1 0% !important;
   height: 0 !important;
@@ -35,18 +35,18 @@
   scroll-behavior: smooth !important;
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-scrollarea::-webkit-scrollbar {
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-scrollarea::-webkit-scrollbar {
   width: 6px;
 }
 
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea::-webkit-scrollbar-thumb {
   background: #cbd5e0;
   border-radius: 3px;
 }
 
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens {
@@ -57,7 +57,7 @@
 }
 
 /* User message style */
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
@@ -76,7 +76,7 @@
 }
 
 /* Bot message style */
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
@@ -95,7 +95,7 @@
 }
 
 /* Error message style */
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
@@ -109,7 +109,7 @@
 }
 
 /* Input area styling */
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea,
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea,
 #geniai-sendarea {
   background: #ffffff !important;
   border-top: 1px solid #e5e7eb !important;
@@ -127,7 +127,7 @@
   opacity: 1 !important;
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-textarea,
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-textarea,
 #geniai-textarea {
   flex: 1 !important;
   border: 1px solid #cbd5e1 !important;
@@ -150,7 +150,7 @@
   opacity: 1 !important;
 }
 
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-sendarea
   #geniai-textarea:focus {
@@ -161,9 +161,9 @@
 }
 
 /* Icon buttons styling */
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-send,
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-mic,
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-stop {
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-send,
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-mic,
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-stop {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -178,9 +178,9 @@
   padding: 0;
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-send img,
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-mic img,
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-stop img {
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-send img,
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-mic img,
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-stop img {
   width: 20px;
   height: 20px;
   filter: brightness(0) invert(1);
@@ -210,23 +210,23 @@
 }
 
 /* Override any conflicting styles */
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-mic {
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-mic {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-mic img {
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-mic img {
   width: 20px !important;
   height: 20px !important;
   margin: auto !important;
 }
 
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-sendarea
   #geniai-icon-send:hover,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-sendarea
   #geniai-icon-mic:hover {
@@ -234,11 +234,11 @@
   transform: scale(1.05);
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-sendarea #geniai-icon-stop {
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-sendarea #geniai-icon-stop {
   background: #ef4444;
 }
 
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-sendarea
   #geniai-icon-stop:hover {
@@ -257,7 +257,7 @@
   }
 }
 
-#page-mod-geniai-view #geniai-mod-popup #geniai-scrollarea .geniai-header {
+#page-mod-aacurachat-view #geniai-mod-popup #geniai-scrollarea .geniai-header {
   color: #fff;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.15);
   font-size: 14px;
@@ -274,7 +274,7 @@
   opacity: 1 !important;
   z-index: 9;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -285,7 +285,7 @@
   transition: all 0.4s;
   gap: 9px;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -297,7 +297,7 @@
   margin-right: 15px;
   display: block;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -305,7 +305,7 @@
   > div {
   height: 40px;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -318,7 +318,7 @@
   line-height: 10px;
   margin-top: 6px;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -331,7 +331,7 @@
   color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.3px;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -342,13 +342,13 @@
   display: flex;
   gap: 10px;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
   .right-icons
   a,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -360,13 +360,13 @@
   transition: all 0.5s;
   margin-right: 0;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
   .right-icons
   a:hover,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -374,14 +374,14 @@
   span:hover {
   opacity: 1;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
   .right-icons
   a
   img,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   .geniai-header
@@ -391,7 +391,7 @@
   height: 24px;
   width: auto;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
@@ -404,26 +404,26 @@
   line-height: 28px;
   border-radius: 5px;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
   .geniai-message.format-text {
   white-space: break-spaces;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
   .geniai-message
   p:last-child,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
   .geniai-message
   ul:last-child,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
@@ -431,7 +431,7 @@
   ol:last-child {
   margin-bottom: 0 !important;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
@@ -439,7 +439,7 @@
   font-style: italic;
   margin-left: 20px;
 }
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens.hide-message
@@ -448,22 +448,22 @@
 }
 
 /* Remove tail styles */
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
   .geniai-message.geniai-server.last::before,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
   .geniai-message.geniai-server.last::after,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
   .geniai-message.last:not(.geniai-server):not(.geniai-error)::before,
-#page-mod-geniai-view
+#page-mod-aacurachat-view
   #geniai-mod-popup
   #geniai-scrollarea
   #geniai-area-mensagens
@@ -499,7 +499,7 @@
 }
 
 /* Premium Header Panel */
-#page-mod-geniai-view #geniai-mod-popup .geniai-header-panel {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-header-panel {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -511,18 +511,18 @@
   flex-shrink: 0;
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-brand {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-brand {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-brand-icon {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-brand-icon {
   font-size: 20px;
   animation: floatIcon 3s ease-in-out infinite;
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-brand-text {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-brand-text {
   font-size: 18px;
   font-weight: 700;
   color: #1e293b;
@@ -530,18 +530,18 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-controls {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-controls {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-dropdown-wrapper {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-dropdown-wrapper {
   position: relative;
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-select-dropdown {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-select-dropdown {
   appearance: none;
   background-color: white;
   border: 1px solid #cbd5e1;
@@ -559,18 +559,18 @@
   background-size: 16px;
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-select-dropdown:hover {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-select-dropdown:hover {
   border-color: #94a3b8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-select-dropdown:focus {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-select-dropdown:focus {
   outline: none;
   border-color: #6366f1;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-clear-btn {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-clear-btn {
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -583,19 +583,19 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-clear-btn:hover {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-clear-btn:hover {
   background: #f8fafc;
   color: #0f172a;
   border-color: #cbd5e1;
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-clear-btn:active {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-clear-btn:active {
   background: #f1f5f9;
   transform: translateY(1px);
 }
 
 /* Generate PDF Button Styling */
-#page-mod-geniai-view #geniai-mod-popup .geniai-pdf-btn {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-pdf-btn {
   background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   border: none;
   border-radius: 8px;
@@ -608,13 +608,13 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-pdf-btn:hover {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-pdf-btn:hover {
   background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
   transform: translateY(-1px);
   box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.1), 0 2px 4px -1px rgba(99, 102, 241, 0.06);
 }
 
-#page-mod-geniai-view #geniai-mod-popup .geniai-pdf-btn:active {
+#page-mod-aacurachat-view #geniai-mod-popup .geniai-pdf-btn:active {
   background: #4338ca;
   transform: translateY(1px);
   box-shadow: none;
@@ -624,4 +624,5 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
 }
+
 
