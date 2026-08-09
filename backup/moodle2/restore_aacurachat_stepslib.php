@@ -18,18 +18,20 @@
  * All the steps to restore mod_aacurachat are defined here.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 /**
- * CLass defines the structure step to restore one mod_aacurachat activity.
+ * Class defines the structure step to restore one mod_aacurachat activity.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class restore_geniai_activity_structure_step extends restore_activity_structure_step {
+class restore_aacurachat_activity_structure_step extends restore_activity_structure_step {
     /**
      * Defines the structure to be restored.
      *
@@ -37,7 +39,7 @@ class restore_geniai_activity_structure_step extends restore_activity_structure_
      */
     protected function define_structure(): array {
         $paths = [];
-        $paths[] = new restore_path_element("geniai", "/activity/geniai");
+        $paths[] = new restore_path_element("aacurachat", "/activity/aacurachat");
 
         return $this->prepare_activity_structure($paths);
     }
@@ -49,12 +51,12 @@ class restore_geniai_activity_structure_step extends restore_activity_structure_
      *
      * @throws dml_exception
      */
-    protected function process_geniai(array $data): void {
+    protected function process_aacurachat(array $data): void {
         global $DB;
         $data = (object) $data;
         $data->course = $this->get_courseid();
         // Insert the record.
-        $newitemid = $DB->insert_record("geniai", $data);
+        $newitemid = $DB->insert_record("aacurachat", $data);
         // Immediately after inserting "activity" record, call this.
         $this->apply_activity_instance($newitemid);
     }

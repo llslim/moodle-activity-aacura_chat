@@ -15,31 +15,30 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the view event.
+ * Defines the course module viewed event.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace mod_aacurachat\event;
 
+defined('MOODLE_INTERNAL') || die;
+
 /**
- * The mod_aacurachat instance list viewed event class
- *
- * If the view mode needs to be stored as well, you may need to
- * override methods get_url() and get_legacy_log_data(), too.
+ * The mod_aacurachat course module viewed event class.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class geniai_course_module_viewed extends \core\event\course_module_viewed {
+class course_module_viewed extends \core\event\course_module_viewed {
     /**
-     * Initialize the event
+     * Initialize the event.
      */
     protected function init() {
-        $this->data["objecttable"] = "geniai";
+        $this->data["objecttable"] = "aacurachat";
         parent::init();
     }
 }

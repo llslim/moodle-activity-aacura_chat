@@ -18,22 +18,22 @@
  * The task that provides a complete restore of mod_aacurachat is defined here.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once("{$CFG->dirroot}/mod/aacurachat/backup/moodle2/restore_geniai_stepslib.php");
+require_once("{$CFG->dirroot}/mod/aacurachat/backup/moodle2/restore_aacurachat_stepslib.php");
 
 /**
  * The class provides a complete restore of mod_aacurachat.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class restore_geniai_activity_task extends restore_activity_task {
+class restore_aacurachat_activity_task extends restore_activity_task {
     /**
      * Defines particular settings that this activity can have.
      */
@@ -47,9 +47,9 @@ class restore_geniai_activity_task extends restore_activity_task {
      * @return base_step.
      */
     protected function define_my_steps(): void {
-        $this->add_step(new restore_geniai_activity_structure_step(
-            "geniai_structure",
-            "geniai.xml"
+        $this->add_step(new restore_aacurachat_activity_structure_step(
+            "aacurachat_structure",
+            "aacurachat.xml"
         ));
     }
 
@@ -62,7 +62,7 @@ class restore_geniai_activity_task extends restore_activity_task {
         $contents = [];
 
         // Define the contents.
-        $contents[] = new restore_decode_content("geniai", ["intro"], "geniai");
+        $contents[] = new restore_decode_content("aacurachat", ["intro"], "aacurachat");
 
         return $contents;
     }
@@ -100,7 +100,7 @@ class restore_geniai_activity_task extends restore_activity_task {
         $rules = [];
 
         // Define the rules.
-        $rules[] = new restore_log_rule("geniai", "view all", "index.php?id={course}", null);
+        $rules[] = new restore_log_rule("aacurachat", "view all", "index.php?id={course}", null);
 
         return $rules;
     }

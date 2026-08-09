@@ -60,7 +60,7 @@ if ($usesections) {
     $sortorder = "m.timemodified DESC";
 }
 
-if (!$geniais = get_all_instances_in_course("geniai", $course)) {
+if (!$geniais = get_all_instances_in_course("aacurachat", $course)) {
     notice(get_string("thereareno", "moodle", get_string("modulenameplural", "mod_aacurachat")));
     exit;
 }

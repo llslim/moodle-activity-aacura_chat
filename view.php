@@ -41,7 +41,7 @@ $course = $DB->get_record("course", ["id" => $cm->course], "*", MUST_EXIST);
 
 $context = context_module::instance($cm->id);
 
-/** @var \mod_aacurachat\vo\geniai $geniai */
+/** @var \mod_aacurachat\vo\aacurachat $aacurachat */
 $aacurachat = $DB->get_record("aacurachat", ["id" => $cm->instance], "*", MUST_EXIST);
 
 $PAGE->set_context($context);
@@ -52,7 +52,7 @@ $PAGE->set_heading(format_string($course->fullname));
 require_course_login($course, true, $cm);
 require_capability("mod/aacurachat:view", $context);
 
-$event = \mod_aacurachat\event\geniai_course_module_viewed::create([
+$event = \mod_aacurachat\event\course_module_viewed::create([
     "objectid" => $PAGE->cm->instance,
     "context" => $PAGE->context,
 ]);

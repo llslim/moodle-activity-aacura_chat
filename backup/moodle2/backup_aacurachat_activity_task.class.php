@@ -18,22 +18,22 @@
  * The task that provides all the steps to perform a complete backup is defined here.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once("{$CFG->dirroot}/mod/aacurachat/backup/moodle2/backup_geniai_stepslib.php");
+require_once("{$CFG->dirroot}/mod/aacurachat/backup/moodle2/backup_aacurachat_stepslib.php");
 
 /**
  * The class provides all the settings and steps to perform one complete backup of mod_aacurachat.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class backup_geniai_activity_task extends backup_activity_task {
+class backup_aacurachat_activity_task extends backup_activity_task {
     /**
      * Defines particular settings for the plugin.
      */
@@ -45,9 +45,9 @@ class backup_geniai_activity_task extends backup_activity_task {
      * Defines particular steps for the backup process.
      */
     protected function define_my_steps() {
-        $this->add_step(new backup_geniai_activity_structure_step(
-            "geniai_structure",
-            "geniai.xml"
+        $this->add_step(new backup_aacurachat_activity_structure_step(
+            "aacurachat_structure",
+            "aacurachat.xml"
         ));
     }
 
@@ -63,11 +63,11 @@ class backup_geniai_activity_task extends backup_activity_task {
         $base = preg_quote($CFG->wwwroot, "/");
 
         // Link to the list of choices.
-        $search = "/(" . $base . "\/mod\/geniai\/index.php\?id\=)([0-9]+)/";
+        $search = "/(" . $base . "\/mod\/aacurachat\/index.php\?id\=)([0-9]+)/";
         $content = preg_replace($search, '$@CERTIFICATEBEAUTIFULINDEX*$2@$', $content);
 
         // Link to choice view by moduleid.
-        $search = "/(" . $base . "\/mod\/geniai\/view.php\?id\=)([0-9]+)/";
+        $search = "/(" . $base . "\/mod\/aacurachat\/view.php\?id\=)([0-9]+)/";
         $content = preg_replace($search, '$@CERTIFICATEBEAUTIFULVIEWBYID*$2@$', $content);
 
         return $content;

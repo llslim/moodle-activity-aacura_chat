@@ -18,18 +18,20 @@
  * Define the complete structure for backup, with file and id annotations.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 /**
- * THe class defines the complete structure for backup, with file and id annotations.
+ * The class defines the complete structure for backup, with file and id annotations.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class backup_geniai_activity_structure_step extends backup_activity_structure_step {
+class backup_aacurachat_activity_structure_step extends backup_activity_structure_step {
     /**
      * Defines the structure of the resulting xml file.
      *
@@ -40,15 +42,15 @@ class backup_geniai_activity_structure_step extends backup_activity_structure_st
      */
     protected function define_structure() {
         // Course certificate.
-        $fields = ["name", "timecreated", "timemodified", "intro", "introformat", "template", "expires"];
-        $geniai = new backup_nested_element("geniai", ["id"], $fields);
+        $fields = ["name", "timecreated", "timemodified", "intro", "introformat", "scenariocode"];
+        $aacurachat = new backup_nested_element("aacurachat", ["id"], $fields);
 
         // Define the source tables for the elements.
-        $geniai->set_source_table("geniai", ["id" => backup::VAR_ACTIVITYID]);
+        $aacurachat->set_source_table("aacurachat", ["id" => backup::VAR_ACTIVITYID]);
 
         // Define file annotations.
-        $geniai->annotate_files("mod_aacurachat", "intro", null); // This file area hasn't itemid.
+        $aacurachat->annotate_files("mod_aacurachat", "intro", null); // This file area hasn't itemid.
 
-        return $this->prepare_activity_structure($geniai);
+        return $this->prepare_activity_structure($aacurachat);
     }
 }

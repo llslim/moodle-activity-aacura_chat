@@ -15,21 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Class geniai
+ * Class aacurachat value object.
  *
  * @package   mod_aacurachat
- * @copyright 2025 Eduardo Kraus https://eduardokraus.com/
+ * @copyright 2026 LL Slim
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace mod_aacurachat\vo;
 
+defined('MOODLE_INTERNAL') || die;
+
 /**
- * Class geniai
+ * Class aacurachat
  *
  * @package mod_aacurachat\vo
  */
-class geniai extends \stdClass {
+class aacurachat extends \stdClass {
     /** @var int */
     public $id;
 
