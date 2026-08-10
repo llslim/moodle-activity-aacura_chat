@@ -12,6 +12,28 @@ Before installing the activity module, install the backend engine plugin:
 - **Path**: `local/aacuracore`
 
 ### Step 2: Install Activity Module (`mod_aacurachat`)
+
+#### Option A: Install via Composer (Recommended)
+Add the repository to your Moodle project's root `composer.json` and require it:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/llslim/moodle-activity-aacurachat.git"
+    }
+],
+"require": {
+    "llslim/moodle-activity-aacurachat": "dev-dev"
+}
+```
+
+Then run:
+```bash
+composer update
+```
+
+#### Option B: Manual Installation
 1. Download the latest release or ZIP from [llslim/moodle-activity-aacurachat](https://github.com/llslim/moodle-activity-aacurachat).
 2. Install via Moodle Administration:
    ```
