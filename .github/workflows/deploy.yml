@@ -1,4 +1,4 @@
-name: Deploy mod_aacurachat (Moodle Chatbot Activity Module)
+name: mod_aacurachat
 
 on:
   push:
