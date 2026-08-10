@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['8.1', '8.2', '8.3', '8.4']
+        php: ['8.2', '8.3', '8.4']
         moodle-branch: ['MOODLE_500_STABLE', 'master']
         database: [pgsql, mariadb]
 
@@ -67,39 +67,39 @@ jobs:
 
     - name: PHP Lint
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci phplint
+      run: moodle-plugin-ci phplint mod_aacurachat
 
     - name: PHP Mess Detector
       continue-on-error: true # This step will show errors but will not fail
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci phpmd
+      run: moodle-plugin-ci phpmd mod_aacurachat
 
     - name: Moodle Code Checker
       continue-on-error: true
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci phpcs --max-warnings 0
+      run: moodle-plugin-ci phpcs --max-warnings 0 mod_aacurachat
 
     - name: Validating
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci validate
+      run: moodle-plugin-ci validate mod_aacurachat
 
     - name: Check upgrade savepoints
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci savepoints
+      run: moodle-plugin-ci savepoints mod_aacurachat
 
     - name: Mustache Lint
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci mustache
+      run: moodle-plugin-ci mustache mod_aacurachat
 
     - name: PHPUnit tests
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci phpunit --fail-on-warning
+      run: moodle-plugin-ci phpunit --fail-on-warning mod_aacurachat
 
     - name: Behat features
       id: behat
       continue-on-error: true
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci behat --profile chrome
+      run: moodle-plugin-ci behat --profile chrome mod_aacurachat
 
     - name: Upload Behat Faildump
       if: ${{ failure() && steps.behat.outcome == 'failure' }}
