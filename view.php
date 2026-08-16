@@ -74,6 +74,20 @@ if ($activesession) {
     $active_scenario = $activesession->scenariocode;
 }
 
+// Derive the active role display label from the selected scenario (default Parent).
+$active_role_label = 'Parent';
+try {
+    if (class_exists('\\local_aacuracore\\scenario\\scenario_loader')) {
+        $active_sc = \local_aacuracore\scenario\scenario_loader::load($active_scenario, $course->id);
+        $activerole = $active_sc->get_role();
+        if ($activerole && !empty($activerole['display_label'])) {
+            $active_role_label = $activerole['display_label'];
+        }
+    }
+} catch (\Throwable $e) {
+    // Fall back to Parent.
+}
+
 // Build available personas options dynamically
 $personasoptions = [];
 $preloadednames = [
@@ -81,6 +95,14 @@ $preloadednames = [
     'brianna' => "Brianna Mitchell (Wesley's Mother - Apraxia)",
     'cathy' => "Cathy Fratner (Charlie's Mother - Down Syndrome)",
     'mary' => "Mary (Mother of Non-Verbal 6-Year-Old)",
+];
+
+// Role display labels for preloaded scenarios (from scenario JSON role metadata).
+$preloadedroles = [
+    'anna' => 'Parent',
+    'brianna' => 'Parent',
+    'cathy' => 'Parent',
+    'mary' => 'Parent',
 ];
 
 // 1. Static preloaded personas enabled in site config
@@ -92,6 +114,7 @@ foreach ($enabledscenarios as $code) {
         $personasoptions[] = [
             'code' => $code,
             'name' => $preloadednames[$code],
+            'role_label' => $preloadedroles[$code] ?? 'Parent',
             'selected' => ($active_scenario === $code),
         ];
     }
@@ -100,9 +123,15 @@ foreach ($enabledscenarios as $code) {
 // 2. Site-wide custom uploaded personas
 $customrecords = $DB->get_records('local_aacuracore_custom_scenarios', null, 'name ASC');
 foreach ($customrecords as $cr) {
+    $rolelabel = 'Parent';
+    $jsondata = json_decode($cr->json_data ?? '', true);
+    if (is_array($jsondata) && isset($jsondata['persona']['role']['display_label'])) {
+        $rolelabel = $jsondata['persona']['role']['display_label'];
+    }
     $personasoptions[] = [
         'code' => $cr->scenariocode,
         'name' => $cr->name . ' (Custom Persona)',
+        'role_label' => $rolelabel,
         'selected' => ($active_scenario === $cr->scenariocode),
     ];
 }
@@ -114,6 +143,7 @@ $data = [
     "mode" => get_config("local_aacuracore", "mode"),
     "talk_geniai" => get_string("talk_geniai", "local_aacuracore", get_config("local_aacuracore", "geniainame")),
     "active_scenario" => $active_scenario,
+    "active_role_label" => $active_role_label,
     "personas_options" => $personasoptions,
     "student_name" => fullname($USER),
     "course_name" => format_string($course->fullname),

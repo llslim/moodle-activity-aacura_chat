@@ -27,7 +27,7 @@
 }}
 
 <div class="chat-container">
-    <div id="geniai-mod-popup" data-student-name="{{student_name}}" data-course-name="{{course_name}}">
+    <div id="geniai-mod-popup" data-student-name="{{student_name}}" data-course-name="{{course_name}}" data-role-label="{{active_role_label}}">
         <input type="hidden" id="local_aacuracore_message_01" value="{{message_01}}" />
         <input type="hidden" id="local_aacuracore_message_02" value="{{message_02}}" />
 
@@ -40,7 +40,7 @@
             <div class="geniai-controls">
                 <div class="geniai-dropdown-wrapper">
                     <select id="geniai-persona-select" class="geniai-select-dropdown">
-                        <option value="" disabled {{^active_scenario}}selected{{/active_scenario}}>-- Select a Parent Persona --</option>
+                        <option value="" disabled {{^active_scenario}}selected{{/active_scenario}}>-- Select a {{^active_role_label}}Parent{{/active_role_label}}{{active_role_label}} --</option>
                         {{#personas_options}}
                         <option value="{{code}}" {{#selected}}selected{{/selected}}>{{name}}</option>
                         {{/personas_options}}
