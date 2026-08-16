@@ -139,6 +139,7 @@ foreach ($customrecords as $cr) {
 $data = [
     "message_01" => get_string("message_01", "local_aacuracore", fullname($USER)),
     "manage_capability" => $capability,
+    "editing" => $PAGE->user_is_editing(),
     "geniainame" => get_config("local_aacuracore", "geniainame"),
     "mode" => get_config("local_aacuracore", "mode"),
     "talk_geniai" => get_string("talk_geniai", "local_aacuracore", get_config("local_aacuracore", "geniainame")),

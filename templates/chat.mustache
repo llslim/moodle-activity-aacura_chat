@@ -49,20 +49,22 @@
                 <button id="geniai-generate-pdf" class="geniai-pdf-btn" title="Export conversation log to PDF">
                     Generate PDF
                 </button>
-                {{#manage_capability}}
+                {{#editing}}{{#manage_capability}}
                 <button id="geniai-ai-builder" class="geniai-pdf-btn" title="Launch AI Scenario Builder (interactive interview)">
                     🧠 AI Builder
                 </button>
-                {{/manage_capability}}
+                {{/manage_capability}}{{/editing}}
                 <button id="geniai-clear-history" class="geniai-clear-btn" title="{{#str}}clear_history_title,local_aacuracore{{/str}}">
                     Clear/Restart Chat
                 </button>
             </div>
         </div>
 
+        {{#editing}}{{#manage_capability}}
         <div id="geniai-statusbar" class="geniai-statusbar">
             <span id="geniai-status-text">💬 Conversing with {{active_role_label}}</span>
         </div>
+        {{/manage_capability}}{{/editing}}
 
         <div id="geniai-scrollarea">
             <div id="geniai-area-mensagens" aria-live="polite" aria-atomic="false"></div>
