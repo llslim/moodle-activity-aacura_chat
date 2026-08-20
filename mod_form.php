@@ -91,6 +91,31 @@ class mod_aacurachat_mod_form extends moodleform_mod {
             ['maxbytes' => 1024 * 1024, 'accepted_types' => ['.json']]
         );
 
+        // Per-activity conversation settings (override site-wide global defaults).
+        $mform->addElement('header', 'aacuraactivitysettings', get_string('activitysettings', 'mod_aacurachat'));
+
+        $maxoptions = [0 => get_string('max_turns_default', 'mod_aacurachat')];
+        for ($i = 4; $i <= 20; $i++) {
+            $maxoptions[$i] = $i . ' ' . get_string('turns', 'mod_aacurachat');
+        }
+        $mform->addElement('select', 'max_turns', get_string('max_turns', 'mod_aacurachat'), $maxoptions);
+        $mform->setDefault('max_turns', 0);
+        $mform->setType('max_turns', PARAM_INT);
+        $mform->addHelpButton('max_turns', 'max_turns', 'mod_aacurachat');
+
+        $intensitylevels = [
+            '' => get_string('parent_intensity_default', 'mod_aacurachat'),
+            'very_low' => get_string('parent_intensity_very_low', 'mod_aacurachat'),
+            'low' => get_string('parent_intensity_low', 'mod_aacurachat'),
+            'medium' => get_string('parent_intensity_medium', 'mod_aacurachat'),
+            'high' => get_string('parent_intensity_high', 'mod_aacurachat'),
+            'very_high' => get_string('parent_intensity_very_high', 'mod_aacurachat'),
+        ];
+        $mform->addElement('select', 'parent_intensity', get_string('parent_intensity', 'mod_aacurachat'), $intensitylevels);
+        $mform->setDefault('parent_intensity', '');
+        $mform->setType('parent_intensity', PARAM_ALPHA);
+        $mform->addHelpButton('parent_intensity', 'parent_intensity', 'mod_aacurachat');
+
         // Add standard elements.
         $this->standard_coursemodule_elements();
 
